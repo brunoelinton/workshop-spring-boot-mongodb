@@ -3,14 +3,19 @@ package com.brunoguimaraes.workshopspringbootmongodb.domain;
 import java.io.Serializable;
 import java.util.Objects;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "user")
 public class User implements Serializable {
 
 	// ID SERIAL VERSION
 	private static final long serialVersionUID = 1L;
 	
 	// BASIC ATRIBUTES
+	@Id
 	private String id;
-	private String nome;
+	private String name;	
 	private String email;
 	
 	// DEFAULT CONSTRUCTOR
@@ -18,10 +23,10 @@ public class User implements Serializable {
 	}
 
 	// CONSTRUCTOR WITH ARGUMENTS
-	public User(String id, String nome, String email) {
+	public User(String id, String name, String email) {
 		super();
 		this.id = id;
-		this.nome = nome;
+		this.name = name;
 		this.email = email;
 	}
 
@@ -34,12 +39,12 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNome(String name) {
+		this.name = name;
 	}
 
 	public String getEmail() {
