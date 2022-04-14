@@ -1,12 +1,15 @@
 package com.brunoguimaraes.workshopspringbootmongodb.resources.exception;
 
 import java.io.Serializable;
+import java.time.Instant;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class StandardError implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	private long timestamp;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
+	private Instant timestamp;
 	private Integer status;
 	private String error;
 	private String message;
@@ -15,7 +18,7 @@ public class StandardError implements Serializable {
 	public StandardError() {
 	}
 
-	public StandardError(long timestamp, Integer status, String error, String message, String path) {
+	public StandardError(Instant timestamp, Integer status, String error, String message, String path) {
 		super();
 		this.timestamp = timestamp;
 		this.status = status;
@@ -24,11 +27,11 @@ public class StandardError implements Serializable {
 		this.path = path;
 	}
 
-	public long getTimestamp() {
+	public Instant getTimestamp() {
 		return timestamp;
 	}
 
-	public void setTimestamp(long timestamp) {
+	public void setTimestamp(Instant timestamp) {
 		this.timestamp = timestamp;
 	}
 

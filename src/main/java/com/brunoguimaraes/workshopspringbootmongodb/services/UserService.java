@@ -1,6 +1,7 @@
 package com.brunoguimaraes.workshopspringbootmongodb.services;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,25 @@ public class UserService {
 		repository.deleteById(id);
 	}
 	
+	// UPDATE USER
+	public User update(User obj) {
+		try {
+			Optional<User> newUser = repository.findById(obj.getId());
+			User user = newUser.get();
+			updateData(user, obj);
+			return repository.save(user);
+		} catch (NoSuchElementException e) {
+			throw new ObjectNotFoundException("Object not found.");
+		}
+	}
+	
+	// AUXILIAR METHOD FOR USER UPDATE
+	private void updateData(User user, User obj) {
+		user.setName(obj.getName());
+		user.setEmail(obj.getEmail());
+		
+	}
+
 	// INSTATIATE USER FROM USER_DTO
 	public User fromDTO(UserDTO objDTO) {
 		return new User(objDTO.getId(), objDTO.getName(), objDTO.getEmail());
