@@ -1,5 +1,6 @@
 package com.brunoguimaraes.workshopspringbootmongodb.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,4 +22,8 @@ public class PostService {
 		return post.orElseThrow(()-> new ObjectNotFoundException("Object not found."));
 	}
 
+	// RETURN A POST WITH TEXT
+	public List<Post> findByTitle(String text){
+		return repository.findByTitleContainingIgnoreCase(text);
+	}
 }
