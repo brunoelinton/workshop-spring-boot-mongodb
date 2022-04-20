@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.brunoguimaraes.workshopspringbootmongodb.domain.Post;
 import com.brunoguimaraes.workshopspringbootmongodb.domain.User;
+import com.brunoguimaraes.workshopspringbootmongodb.dto.AuthorDTO;
 import com.brunoguimaraes.workshopspringbootmongodb.repository.PostRepository;
 import com.brunoguimaraes.workshopspringbootmongodb.repository.UserRepository;
 
@@ -39,8 +40,8 @@ public class Instatiation implements CommandLineRunner {
 		// DELETING ALL POSTS
 		postRepository.deleteAll();
 
-		Post post1 = new Post(null, sdf.parse("21/03/2018"), "Partiu viagem", "Vou viajar para São Paulo. abraços!", maria);
-		Post post2 = new Post(null, sdf.parse("23/03/2018"), "Bom dia", "Acordei feliz hoje!", maria);
+		Post post1 = new Post(null, sdf.parse("21/03/2018"), "Partiu viagem", "Vou viajar para São Paulo. Abraços!", new AuthorDTO(maria));
+		Post post2 = new Post(null, sdf.parse("23/03/2018"), "Bom dia", "Acordei feliz hoje!", new AuthorDTO(maria));
 		postRepository.saveAll(Arrays.asList(post1, post2));
 
 	}
