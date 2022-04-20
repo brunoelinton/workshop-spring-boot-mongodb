@@ -1,5 +1,6 @@
 package com.brunoguimaraes.workshopspringbootmongodb.services;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,5 +33,10 @@ public class PostService {
 	// RETURN A POST WITH TEXT
 	public List<Post> findByTitle(String text){
 		return repository.searchTitle(text);
+	}
+	
+	public List<Post> fullSearch(String text, Date minDate, Date maxDate){
+		maxDate = new Date(maxDate.getTime() + 24L * 60L * 60L * 1000L);
+		return repository.fullSearch(text, minDate, maxDate);
 	}
 }
