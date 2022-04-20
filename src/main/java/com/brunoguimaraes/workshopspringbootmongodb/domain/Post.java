@@ -1,13 +1,16 @@
 package com.brunoguimaraes.workshopspringbootmongodb.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.brunoguimaraes.workshopspringbootmongodb.dto.AuthorDTO;
+import com.brunoguimaraes.workshopspringbootmongodb.dto.CommentDTO;
 
 @Document
 public class Post implements Serializable {
@@ -26,6 +29,9 @@ public class Post implements Serializable {
 	// DEFAULT CONSTRUCTOR
 	public Post() {
 	}
+	
+	// REFERENCING ANOTHER COLLECTION BY ASSOCIATION
+	private List<CommentDTO> comments = new ArrayList<>();
 
 	// CONSTRUCTOR WITH ARGUMENTS
 	public Post(String id, Date date, String title, String body, AuthorDTO author) {
@@ -76,6 +82,10 @@ public class Post implements Serializable {
 
 	public void setAuthor(AuthorDTO author) {
 		this.author = author;
+	}
+	
+	public List<CommentDTO> getComments() {
+		return comments;
 	}
 
 	// HASHCODE AND EQUALS

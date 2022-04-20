@@ -9,7 +9,7 @@ public class AuthorDTO implements Serializable {
 	// ID SERIAL VERSION
 	private static final long serialVersionUID = 1L;
 	
-	// BASIC ATRIBUTES FOR POST DTO
+	// BASIC ATRIBUTES FOR AUTHOR DTO
 	private String id;
 	private String name;
 	
