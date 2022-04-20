@@ -23,7 +23,14 @@ public class PostService {
 	}
 
 	// RETURN A POST WITH TEXT
+	/*
 	public List<Post> findByTitle(String text){
 		return repository.findByTitleContainingIgnoreCase(text);
+	}
+	*/
+	
+	// RETURN A POST WITH TEXT
+	public List<Post> findByTitle(String text){
+		return repository.searchTitle(text);
 	}
 }
